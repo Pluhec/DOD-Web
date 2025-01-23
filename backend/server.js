@@ -7,6 +7,15 @@ const path = require('path');
 
 const app = express();
 
+const cors = require('cors');
+
+// Nastavení CORS
+app.use(cors({
+  origin: 'http://localhost:3001', // URL frontend aplikace
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Povolené HTTP metody
+  credentials: true // Povolit cookies/autorizaci
+}));
+
 app.use(express.json());
 app.use(express.static('public'));
 

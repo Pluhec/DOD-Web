@@ -12,7 +12,7 @@ app.use(express.static('public'));
 
 // Definice routu pro hlavní stránku
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '', ''));
+  res.sendFile(path.join(__dirname, './frontend/frontend/public', 'index.html'));
 });
 
 // Definice routů pro API

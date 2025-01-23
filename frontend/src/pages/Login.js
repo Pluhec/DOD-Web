@@ -29,7 +29,13 @@ const Login = () => {
   };
 
   return (
-    <div className='flex items-center justify-center h-screen bg-background'>
+    <div className='flex flex-col items-center justify-center h-screen bg-background'>
+          <nav className="flex space-x-4">
+                  <Link to="/" className="text-blue-500">Home</Link>
+                  <Link to="/about" className="text-blue-500">About</Link>
+                  <Link to="/register" className="text-blue-500">Register</Link>
+                  <Link to="/login" className="text-blue-500">Login</Link>
+                </nav>
       <div className='bg-secondaryBackground w-full max-w-sm p-8 rounded-lg shadow-lg'>
         <h1 className='text-4xl font-bold text-textPrimary mb-6 font-nowharehouse'>UNDEATH</h1>
 

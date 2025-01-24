@@ -8,5 +8,6 @@ router.post('/play-map', verifyToken, mapController.playMap);
 router.post('/submit-stats', verifyToken, mapController.submitStats);
 router.post('/submit-map', verifyToken, mapController.submitMap);
 router.post('/leaderboard', verifyToken, mapController.getLeaderboard);
+router.post('/get-mapname', verifyToken, mapController.getMapName);
 
 module.exports = router;

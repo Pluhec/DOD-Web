@@ -135,3 +135,24 @@ exports.getLeaderboard = async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 };
+
+exports.getMapName = async (req, res) => {
+    const { id } = req.body;
+
+    if (!id) {
+        return res.status(400).json({ error: 'mamp_id is required' });
+    }
+
+    try {
+        const map = await Map.findByPk(id, { attributes: ['name'] });
+
+        if (!user) {
+            return res.status(404).json({ error: 'Map not found' });
+        }
+
+        res.status(200).json({ name: map.name });
+    } catch (error) {
+        console.error('Error fetching map name:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};

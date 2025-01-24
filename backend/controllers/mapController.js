@@ -1,9 +1,11 @@
-const db = require('../models');
+const sequelize = require('../config/database');
+const Map = require('../models/Map')(sequelize, require('sequelize').DataTypes);
+const MapRun = require('../models/MapRun')(sequelize, require('sequelize').DataTypes);
 
 // Fetch all maps from the database
 exports.getAllMaps = async (req, res) => {
     try {
-        const maps = await db.Map.findAll({ attributes: ['id', 'name', 'difficulty', 'waves'] });
+        const maps = await Map.findAll({ attributes: ['id', 'name', 'difficulty', 'waves'] });
         res.status(200).json(maps);
     } catch (error) {
         console.error('Error fetching maps:', error);
@@ -20,7 +22,7 @@ exports.playMap = async (req, res) => {
     }
 
     try {
-        const map = await db.Map.findByPk(map_id);
+        const map = await Map.findByPk(map_id);
         
         if (!map) {
             return res.status(404).json({ error: 'Map not found' });
@@ -42,7 +44,7 @@ exports.submitStats = async (req, res) => {
     }
 
     try {
-        await db.MapRun.create({
+        await MapRun.create({
             map_id,
             player_id,
             money: stats.money,

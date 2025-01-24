@@ -20,14 +20,14 @@ exports.getAllMaps = async (req, res) => {
 
 // Fetch map data for playing based on map ID
 exports.playMap = async (req, res) => {
-    const { map_id } = req.body;
+    const { id } = req.body;
 
-    if (!map_id) {
+    if (!id) {
         return res.status(400).json({ error: 'map_id is required' });
     }
 
     try {
-        const map = await Map.findByPk(map_id);
+        const map = await Map.findByPk(id);
         
         if (!map) {
             return res.status(404).json({ error: 'Map not found' });
@@ -42,20 +42,20 @@ exports.playMap = async (req, res) => {
 
 // Save statistics for a played map
 exports.submitStats = async (req, res) => {
-    const { map_id, player_id, stats } = req.body;
+    const { mapID, playerID, money, kills, waves, time } = req.body;
 
-    if (!map_id || !player_id || !stats) {
+    if (!mapID || !playerID || !money || !kills || !waves || !time) {
         return res.status(400).json({ error: 'map_id, player_id, and stats are required' });
     }
 
     try {
         await MapRun.create({
-            map_id,
-            player_id,
-            money: stats.money,
-            kills: stats.kills,
-            waves: stats.waves,
-            time: stats.time
+            mapID,
+            playerID,
+            money: money,
+            kills: kills,
+            waves: waves,
+            time: time
         });
 
         res.status(201).json({ message: 'Statistics saved successfully' });
@@ -94,31 +94,31 @@ exports.submitMap = [
 ];
 
 exports.getLeaderboard = async (req, res) => {
-    const { map_id } = req.body;
+    const { id } = req.body;
 
-    if (!map_id) {
+    if (!id) {
         return res.status(400).json({ error: 'map_id is required' });
     }
 
     try {
         const topPlayers = await Promise.all([
             MapRun.findAll({
-                where: { map_id },
+                where: { id },
                 order: [['money', 'DESC']],
                 limit: 5
             }),
             MapRun.findAll({
-                where: { map_id },
+                where: { id },
                 order: [['kills', 'DESC']],
                 limit: 5
             }),
             MapRun.findAll({
-                where: { map_id },
+                where: { id },
                 order: [['waves', 'DESC']],
                 limit: 5
             }),
             MapRun.findAll({
-                where: { map_id },
+                where: { id },
                 order: [['time', 'ASC']],
                 limit: 5
             })

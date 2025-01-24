@@ -28,7 +28,7 @@ const Home = () => {
       {/* Hero Section */}
       <div className="flex-grow relative h-[100vh] bg-cover bg-center" style={{ backgroundImage: `url(${heroImage})` }}>
         <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <h1 className="text-8xl font-bold text-textSecondary font-nowharehouse">UNDEATH</h1>
+          <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold text-textSecondary font-nowharehouse">UNDEATH</h1>
         </div>
         <div className="absolute bottom-10 w-full flex justify-center">
           <button 

@@ -12,6 +12,7 @@ module.exports = {
         accent: '#3C3D37', // Akcent
         textPrimary: '#ECDFCC', // Barva textu
         textSecondary: '#FFFFFF', // Sekundární barva textu
+        error: '#F87171', // Barva chyby
       },
       fontFamily: {
         nowharehouse: ['Nowharehouse', 'sans-serif'], // Add the new font here

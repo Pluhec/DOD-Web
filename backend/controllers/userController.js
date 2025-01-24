@@ -3,15 +3,15 @@ const MapRun = require('../models/MapRun')(sequelize, require('sequelize').DataT
 const User = require('../models/User')(sequelize, require('sequelize').DataTypes);
 
 exports.getUserStats = async (req, res) => {
-    const { user_id } = req.body;
+    const { id } = req.body;
 
-    if (!user_id) {
+    if (!id) {
         return res.status(400).json({ error: 'user_id is required' });
     }
 
     try {
         const bestStats = await MapRun.findOne({
-            where: { player_id: user_id },
+            where: { id: id },
             attributes: [
                 [sequelize.fn('MAX', sequelize.col('time')), 'best_time'],
                 [sequelize.fn('MAX', sequelize.col('waves')), 'best_waves'],
@@ -28,14 +28,14 @@ exports.getUserStats = async (req, res) => {
 };
 
 exports.getNickname = async (req, res) => {
-    const { user_id } = req.body;
+    const { id } = req.body;
 
-    if (!user_id) {
+    if (!id) {
         return res.status(400).json({ error: 'user_id is required' });
     }
 
     try {
-        const user = await User.findByPk(user_id, { attributes: ['nickname'] });
+        const user = await User.findByPk(id, { attributes: ['nickname'] });
 
         if (!user) {
             return res.status(404).json({ error: 'User not found' });

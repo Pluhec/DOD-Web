@@ -61,9 +61,6 @@ const Register = () => {
                   <Link to="/" className="flex items-center text-white hover:text-accent transition-colors">
                       Home
                   </Link>
-                  <Link to="/about" className="flex items-center text-white hover:text-accent transition-colors">
-                      About
-                  </Link>
                   <Link to="/register" className="flex items-center text-white hover:text-accent transition-colors">
                       Register
                   </Link>

@@ -40,7 +40,11 @@ const Login = () => {
           
             const data = await response.json();
             console.log('Login successful:', data);
-            navigate('/dashboard'); // Nebo jiná stránka po úspěchu
+            
+            // Store JWT token in localStorage
+            localStorage.setItem('authToken', data.token);
+
+            navigate('/Maps'); // Nebo jiná stránka po úspěchu
           } catch (error) {
             console.error('Login failed:', error.message);
           }
@@ -52,9 +56,6 @@ return (
         <nav className="flex space-x-4 bg-primary p-4 rounded-lg shadow-md fixed top-0 left-0 right-0 z-10">
             <Link to="/" className="flex items-center text-white hover:text-accent transition-colors">
                 Home
-            </Link>
-            <Link to="/about" className="flex items-center text-white hover:text-accent transition-colors">
-                About
             </Link>
             <Link to="/register" className="flex items-center text-white hover:text-accent transition-colors">
                 Register

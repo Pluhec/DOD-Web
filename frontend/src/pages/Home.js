@@ -17,9 +17,6 @@ const Home = () => {
         <Link to="/" className="flex items-center text-textPrimary hover:text-accent transition-colors">
           Home
         </Link>
-        <Link to="/about" className="flex items-center text-textPrimary hover:text-accent transition-colors">
-          About
-        </Link>
         <Link to="/register" className="flex items-center text-textPrimary hover:text-accent transition-colors">
           Register
         </Link>

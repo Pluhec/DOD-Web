@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const sequelize = require('./config/database');
 const authRoutes = require('./routes/authRoutes');
+const mapRoutes = require('./routes/mapRoutes');
 const path = require('path');
 
 const app = express();
@@ -11,9 +12,9 @@ const cors = require('cors');
 
 // Nastavení CORS
 app.use(cors({
-  origin: 'http://localhost:3001', // URL frontend aplikace
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Povolené HTTP metody
-  credentials: true // Povolit cookies/autorizaci
+  origin: 'http://localhost:3001',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
 }));
 
 app.use(express.json());
@@ -26,6 +27,7 @@ app.get('/', (req, res) => {
 
 // Definice routů pro API
 app.use('/api/auth', authRoutes);
+app.use('/api/maps', mapRoutes);
 
 // Připojení k databázi
 sequelize.authenticate()

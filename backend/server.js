@@ -4,6 +4,7 @@ const express = require('express');
 const sequelize = require('./config/database');
 const authRoutes = require('./routes/authRoutes');
 const mapRoutes = require('./routes/mapRoutes');
+const userRoutes = require('./routes/userRoutes');
 const path = require('path');
 
 const app = express();
@@ -28,6 +29,7 @@ app.get('/', (req, res) => {
 // Definice routů pro API
 app.use('/api/auth', authRoutes);
 app.use('/api/maps', mapRoutes);
+app.use('/api/user', userRoutes);
 
 // Připojení k databázi
 sequelize.authenticate()

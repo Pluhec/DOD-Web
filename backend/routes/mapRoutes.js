@@ -6,5 +6,7 @@ const { verifyToken } = require('../middlewares/authMiddleware');
 router.get('/maps', verifyToken, mapController.getAllMaps);
 router.post('/play-map', verifyToken, mapController.playMap);
 router.post('/submit-stats', verifyToken, mapController.submitStats);
+router.post('/submit-map', verifyToken, mapController.submitMap);
+router.post('/leaderboard', verifyToken, mapController.getLeaderboard);
 
 module.exports = router;

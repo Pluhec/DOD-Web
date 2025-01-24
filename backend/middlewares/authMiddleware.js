@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const sequelize = require('../config/database');
+const User = require('../models/User')(sequelize, require('sequelize').DataTypes);
 
 // Middleware pro ověření tokenu
 exports.verifyToken = async (req, res, next) => {

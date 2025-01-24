@@ -11,7 +11,7 @@ exports.getUserStats = async (req, res) => {
 
     try {
         const bestStats = await MapRun.findOne({
-            where: { id: id },
+            where: { userID: id },
             attributes: [
                 [sequelize.fn('MAX', sequelize.col('time')), 'best_time'],
                 [sequelize.fn('MAX', sequelize.col('waves')), 'best_waves'],

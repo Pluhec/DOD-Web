@@ -5,6 +5,8 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Maps from './pages/Maps';
 import Profile from './pages/Profile';
+import Leaderboard from './components/Leaderboard';
+
 
 const App = () => {
   return (
@@ -17,6 +19,7 @@ const App = () => {
 
         <Route path="/maps" element={<Maps />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/leaderboard/:mapId" element={<Leaderboard />} />
       </Routes>
     </div>
   );

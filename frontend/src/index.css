@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'Nowharehouse';
+  src: url('./Fonts/Nowharehouse.ttf') format('truetype');
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
